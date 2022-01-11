@@ -1,0 +1,27 @@
+USE Users
+GO
+
+IF OBJECT_ID('Austin_Traffic_Incident ') IS NOT NULL
+	DROP TABLE Austin_Traffic_Incident;
+
+	Create table Austin_Traffic_Incident (
+	
+	Traffic_Report_Id NVARCHAR(100) NOT NULL,
+	Published_Date DATETIME NOT NULL,
+	Issue_Reported NVARCHAR(100) NOT NULL,
+	Incident_Location NVARCHAR(100) NOT NULL,
+	Incident_Address NVARCHAR (255) NOT NULL,
+	Case_Status NVARCHAR (50) NOT NULL,
+	Status_Date DATETIME NOT NULL,
+	Created DATETIME NOT NULL
+	);
+GO 
+
+	Select * from Austin_Traffic_Incident
+
+
+
+
+
+
+///https://data.austintexas.gov/Transportation-and-Mobility/Real-Time-Traffic-Incident-Reports/dx9v-zd7x
