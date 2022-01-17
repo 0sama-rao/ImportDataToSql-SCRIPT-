@@ -1,4 +1,3 @@
-
 USE Users
 GO
 
@@ -37,7 +36,14 @@ GO
 select * from FilerNonFiler
 
 
+///Multiple files function added 
+cols = ['SR_NO', 'NTN', 'NAME']
+    dfs = pd.read_excel(filename, usecols=cols, sheet_name=None)
+    records = pd.concat(df for df in dfs.values()).to_numpy().tolist()
 
+////null entity still getting errors
+for df in dfs.values():
+    df.fillna('NA', inplace = True)
 
 
 
