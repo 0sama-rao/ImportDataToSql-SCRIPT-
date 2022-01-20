@@ -20,7 +20,13 @@ def select_file():
         title='Open a file',
         initialdir='/',
         filetypes=filetypes)
-    print (filename)
+
+    showinfo(
+        title='Selected File',
+        message=filename
+    )
+
+
 # open button
 open_button = ttk.Button(
     root,

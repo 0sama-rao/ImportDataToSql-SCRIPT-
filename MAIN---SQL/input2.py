@@ -1,19 +1,16 @@
-import tkinter as tk
-from tkinter.filedialog import askopenfilename
-#import pandas as pd
+import sys
+import os
+from tkinter import *
 
+window=Tk()
 
-def import_csv_data():
-    global v
-    csv_file_path = askopenfilename()
-    print(csv_file_path)
-    v.set(csv_file_path)
-    df = pd.read_csv(csv_file_path)
+window.title("Running Python Script")
+window.geometry('550x200')
 
-root = tk.Tk()
-tk.Label(root, text='File Path').grid(row=0, column=0)
-v = tk.StringVar()
-entry = tk.Entry(root, textvariable=v).grid(row=0, column=1)
-tk.Button(root, text='Browse Data Set',command=import_csv_data).grid(row=1, column=0)
-tk.Button(root, text='Close',command=root.destroy).grid(row=1, column=1)
-root.mainloop()
+def run():
+    os.system('opencv_video.py')
+
+btn = Button(window, text="Click Me", bg="black", fg="white",command=run)
+btn.grid(column=0, row=0)
+
+window.mainloop()

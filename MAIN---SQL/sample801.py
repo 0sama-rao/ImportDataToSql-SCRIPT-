@@ -1,20 +1,18 @@
 import pypyodbc as odbc # pip install pypyodbc
-#import pyodbc as odbc
 import pandas as pd # pip install pandas
 
 
 """
+
 Step 1. Importing dataset from Excel/CSV
 """
-
 filename = input("Input the Filename: ")
 dfs = pd.read_excel(filename, usecols=['SR_NO','NTN'], sheet_name=None)
 
 d = {}
 for k, v in dfs.items():
-    d[k] = pd.concat(df for df in dfs.values()).to_numpy().tolist()
+    d[k] = pd.concat(dfs.values()).to_numpy().tolist()
 print (d.keys())
-
 #for test sheetnames
 
 """
@@ -29,9 +27,8 @@ def connection_string(driver, server_name, database_name):
         DRIVER={{{driver}}};
         SERVER={server_name};
         DATABASE={database_name};
-        Trust_Connection=no;
         username='as';
-        password='1234'
+        password= '1234';
     """
     return conn_string
 
@@ -53,13 +50,13 @@ Step 3.3 Create a cursor connection and insert records
 """
 
 sql_insert = '''
-    INSERT INTO eg207
+    INSERT INTO eg209
     VALUES (?,?, GETDATE())
 '''
 
 try:
     cursor = conn.cursor()
-    cursor.executemany(sql_insert, d[k])
+    cursor.executemany(sql_insert,d[k])
     cursor.commit();
 except Exception as e:
     cursor.rollback()
